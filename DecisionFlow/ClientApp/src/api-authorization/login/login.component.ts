@@ -14,7 +14,7 @@ import { LoginActions, QueryParameterNames, ApplicationPaths, ReturnUrlType } fr
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public message = new BehaviorSubject<string | null | undefined>(null);
+  public message = new BehaviorSubject<string | any>(null);
 
   constructor(
     private authorizeService: AuthorizeService,
@@ -100,6 +100,7 @@ export class LoginComponent implements OnInit {
   }
 
   private getReturnUrl(state?: INavigationState): string {
+    console.log(state, 'state')
     const fromQuery = (this.activatedRoute.snapshot.queryParams as INavigationState).returnUrl;
     // If the url is coming from the query string, check that is either
     // a relative url or an absolute url
