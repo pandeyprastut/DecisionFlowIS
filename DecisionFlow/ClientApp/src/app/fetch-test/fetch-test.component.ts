@@ -25,8 +25,8 @@ export class FetchTestComponent implements OnInit {
 }
 
 interface WeatherForecast {
-  Date: string;
-  TemperatureC: number;
-  TemperatureF: number;
-  Summary: string;
+  date: string;
+  temperatureC: number;
+  temperatureF: number;
+  summary: string;
 }

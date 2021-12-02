@@ -12,7 +12,10 @@ const PROXY_CONFIG = [
       "/Identity",
       "/connect",
       "/ApplyDatabaseMigrations",
-      "/_framework"
+      "/_framework",
+      "/api/ApplicationFilter/GetAllFilters",
+      "/api/DeliverableView/GetAllGridDataByFilter",
+      "/api/DeliverableView/GetInventoryViewDataByFilter"
    ],
     target: target,
     secure: false

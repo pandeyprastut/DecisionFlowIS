@@ -41,6 +41,7 @@ export class FilterService {
       "x-api-key",
       "mJwY9uinltILC9XIOpTo" 
     );
+    console.log(this.baseUrl, '***********************88')
     return this.httpClient.get(this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
   }
 
