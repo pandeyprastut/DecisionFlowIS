@@ -8,6 +8,10 @@ namespace DF.Contracts.Models
 {
     public class ExplodedViewData
     {
+        public int ParentMaterialID { get; set; }
+        public string ParentPartNumber { get; set; }
+        public int DeliverableMaterialID { get; set; }
+        public string DeliverablePartNumber { get; set; }
         public string Index { get; set; }
 
         public int MaterialID { get; set; }
