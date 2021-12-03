@@ -10,8 +10,7 @@ export class FilterService {
   private filterValue = new BehaviorSubject<any>(
     {
       "customers": [
-        {
-        }
+        {}
       ],
       "programs": [
        

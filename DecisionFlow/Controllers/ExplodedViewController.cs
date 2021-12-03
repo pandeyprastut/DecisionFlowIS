@@ -10,7 +10,7 @@ using DF.Contracts.Models;
 
 namespace DecisionFlow.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class ExplodedViewController : Controller

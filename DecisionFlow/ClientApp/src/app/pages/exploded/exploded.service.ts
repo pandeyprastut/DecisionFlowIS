@@ -275,4 +275,17 @@ export class ExplodedService {
     return populationData;
   }
 
+  getTopPanelData(http: any, url: any, body: any){
+      
+    return http.post(url, body)
+   .toPromise()
+   .then((res: any) => {
+     let pre = res.result;
+     return pre
+   })
+   .catch((error: any) => {
+     console.error(error, 'error');
+   });
+}
+
 }

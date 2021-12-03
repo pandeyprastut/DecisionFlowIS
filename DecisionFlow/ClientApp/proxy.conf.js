@@ -16,7 +16,8 @@ const PROXY_CONFIG = [
       "/api/ApplicationFilter/GetAllFilters",
       "/api/DeliverableView/GetAllGridDataByFilter",
       "/api/DeliverableView/GetInventoryViewDataByFilter",
-      "/api/DeliverableView/GetPerformanceViewDataByFilter"
+      "/api/DeliverableView/GetPerformanceViewDataByFilter",
+      "/api/ExplodedView/GetAllDeliverables"
    ],
     target: target,
     secure: false

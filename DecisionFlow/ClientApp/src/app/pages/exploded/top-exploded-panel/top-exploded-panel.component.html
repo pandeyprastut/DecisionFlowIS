@@ -9,7 +9,11 @@
                     <div class="mid-text">
                         Deliverable
                     </div>
-                    <dx-select-box [items]="simpleProducts"></dx-select-box>
+                    <dx-select-box 
+                        [dataSource]="deliverablesItems"
+                        displayExpr="deliverable"
+                        valueExpr="materialID"
+                    ></dx-select-box>
                 </div>
             </div>
         </div>

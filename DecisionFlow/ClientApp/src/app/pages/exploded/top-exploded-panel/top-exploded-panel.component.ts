@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ExplodedService, Customer } from '../exploded.service';
+import { FilterService } from 'src/app/shared/services/filter.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-top-exploded-panel',
@@ -7,25 +9,11 @@ import { ExplodedService, Customer } from '../exploded.service';
   styleUrls: ['./top-exploded-panel.component.scss']
 })
 export class TopExplodedPanelComponent implements OnInit {
-
+  filterValue: any;
   popupVisible = true;
   selectedDates: any;
-simpleProducts: string[] = [
-  "Soft Cloth A",
-  "SuperHD Video Player",
-  "SuperPlasma 50",
-  "SuperLED 50",
-  "SuperLED 42",
-  "SuperLCD 55",
-  "SuperLCD 42",
-  "SuperPlasma 65",
-  "SuperLCD 70",
-  "Projector Plus",
-  "Projector PlusHT",
-  "ExcelRemote IR",
-  "ExcelRemote BT",
-  "ExcelRemote IP"
-];
+  baseUrl: any;
+  deliverablesItems: any;
 customers!: Customer[];
 longtabs: any[] = [
   { text: "Deliveries" },
@@ -34,11 +22,29 @@ longtabs: any[] = [
   { text: "Custom"}
 ];
 
-  constructor(service: ExplodedService) { 
-    this.customers = service.getCustomers();
+  constructor(
+    private _explodedService: ExplodedService, 
+    private _filterService: FilterService,
+    private httpClient: HttpClient,
+    @Inject('BASE_URL') baseUrl: string
+    ) { 
+      this.baseUrl = baseUrl;
+      this.customers = _explodedService.getCustomers();
+    }
+
+  getDeliverablesData(body: any){
+    return this._explodedService.getTopPanelData(this.httpClient, this.baseUrl + "api/ExplodedView/GetAllDeliverables", body)
   }
 
   ngOnInit() {
-  }
+    this._filterService.currentFilterValue.subscribe((filter: any) => {
+      this.filterValue = filter;
+      this.getDeliverablesData(filter).then((d: any) => {
+        this.deliverablesItems = d;
+        console.log( d )
+      });
 
+   
+    })
+  }
 }

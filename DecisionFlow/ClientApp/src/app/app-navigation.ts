@@ -6,11 +6,11 @@ export const navigation = [
     path: '/home',
     icon: 'home'
   },
-  {
-    text: 'Fetch',
-    path: '/fetch-data',
-    icon: 'home'
-  },
+  // {
+  //   text: 'Fetch',
+  //   path: '/fetch-data',
+  //   icon: 'home'
+  // },
   // {
   //   text: 'Examples',
   //   icon: 'folder',
@@ -48,7 +48,7 @@ export const navigation = [
     ]
   },
   {
-    text: 'Exploded View',
+    text: 'Assembly Overview',
     icon: 'chart',
     items: [
       {
