@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module'
 import { TopExplodedPanelComponent } from './top-exploded-panel/top-exploded-panel.component';
 import { ExplodedComponent } from './exploded.component';
-import { DxSelectBoxModule, DxTreeListModule, DxBulletModule, DxTemplateModule, DxChartModule } from 'devextreme-angular';
+import { DxSelectBoxModule, DxTreeListModule, DxBulletModule, DxTemplateModule, DxChartModule, DxPopupModule, DxDataGridModule, DxTabsModule, DxButtonModule, DxToolbarModule, DxTooltipModule } from 'devextreme-angular';
 import { ExplodedChartComponent } from './exploded-chart/exploded-chart.component';
 import { ProjectedChartComponent } from './projected-chart/projected-chart.component';
 import { ExplodedService } from './exploded.service';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { DxoToolbarModule } from 'devextreme-angular/ui/nested';
+
 
 
 @NgModule({
@@ -23,7 +26,13 @@ import { ExplodedService } from './exploded.service';
     DxTreeListModule,
     DxBulletModule, 
     DxTemplateModule,
-    DxChartModule
+    DxChartModule,
+    DxPopupModule,
+    DxDataGridModule,
+    DxTabsModule,
+    NgxDaterangepickerMd.forRoot(),
+    DxButtonModule,
+    DxToolbarModule
   ],
   exports: [
     TopExplodedPanelComponent,

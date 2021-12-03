@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExplodedService, Customer } from '../exploded.service';
 
 @Component({
   selector: 'app-top-exploded-panel',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopExplodedPanelComponent implements OnInit {
 
-  
+  popupVisible = true;
+  selectedDates: any;
 simpleProducts: string[] = [
   "Soft Cloth A",
   "SuperHD Video Player",
@@ -24,8 +26,17 @@ simpleProducts: string[] = [
   "ExcelRemote BT",
   "ExcelRemote IP"
 ];
+customers!: Customer[];
+longtabs: any[] = [
+  { text: "Deliveries" },
+  { text: "Inventory" },
+  { text: "Performance" },
+  { text: "Custom"}
+];
 
-  constructor() { }
+  constructor(service: ExplodedService) { 
+    this.customers = service.getCustomers();
+  }
 
   ngOnInit() {
   }
