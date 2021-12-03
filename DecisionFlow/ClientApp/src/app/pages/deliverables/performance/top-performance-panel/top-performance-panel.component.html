@@ -3,37 +3,17 @@
         <div class="outer">
             <div class="totals">
                 <div class="totals-text">
-                    Totals
-                </div>
-                <div class="toggles">
-                    <div class="toggle">
-                        <div 
-                        [class.selected]="isUnit"
-                        class="unit"
-                        (click)="toggleUnit()"
-                         >
-                            <div>Unit</div>
-                        </div>
-                        <div
-                        [class.selected]="!isUnit" 
-                        class="unit money"
-                        (click)="toggleDollar()"
-                        >
-                            <div>$</div>
-                        </div>
-                    </div>
+                   Performance Totals
                 </div>
             </div>
             <div class="inners-container">
                 <div class="inner mid">
                     <div class="KPI">
                         <div class="buy">
-                            <div class="mid-text">Target</div>
+                            <div class="mid-text">Flow Balance</div>
                             <div class="kpi-values">
-                                <div class="numeric">$351,128</div>
-                                <div class="percentage">
-                                    <app-icon [icon]="'up-icon'"></app-icon>12%
-                                </div>
+                                <div class="percent numeric">%</div>
+                                <div class="numeric">{{flowBalance}}</div>
                             </div>
                         </div>
                     </div>
@@ -41,12 +21,10 @@
                 <div class="inner mid">
                     <div class="KPI">
                         <div class="buy">
-                            <div class="mid-text">Actual</div>
+                            <div class="mid-text">Quality</div>
                             <div class="kpi-values">
-                                <div class="numeric">$351,128</div>
-                                <div class="percentage">
-                                    <app-icon [icon]="'up-icon'"></app-icon>12%
-                                </div>
+                                <div class="percent numeric">%</div>
+                                <div class="numeric">{{quality}}</div>
                             </div>
                         </div>
                     </div>
@@ -54,12 +32,10 @@
                 <div class="inner mid">
                     <div class="KPI">
                         <div class="buy">
-                            <div class="mid-text">Excess</div>
+                            <div class="mid-text">Run Time % of Lead Time</div>
                             <div class="kpi-values">
-                                <div class="numeric">$351,128</div>
-                                <div class="percentage">
-                                    <app-icon [icon]="'up-icon'"></app-icon> 12%
-                                </div>
+                                <div class="percent numeric">%</div>
+                                <div class="numeric">{{runTime}}</div>
                             </div>
                         </div>
                     </div>
@@ -67,25 +43,9 @@
                 <div class="inner mid">
                     <div class="KPI">
                         <div class="buy">
-                            <div class="mid-text">Projected</div>
+                            <div class="mid-text">Velocity</div>
                             <div class="kpi-values">
-                                <div class="numeric">$351,128</div>
-                                <div class="percentage">
-                                    <app-icon [icon]="'up-icon'"></app-icon>12%
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner mid">
-                    <div class="KPI">
-                        <div class="buy">
-                            <div class="mid-text">Gap</div>
-                            <div class="kpi-values">
-                                <div class="numeric">$351,128</div>
-                                <div class="percentage">
-                                    <app-icon [icon]="'up-icon'"></app-icon> 12%
-                                </div>
+                                <div class="numeric">{{velocity}}</div>
                             </div>
                         </div>
                     </div>

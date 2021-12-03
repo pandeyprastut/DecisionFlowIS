@@ -49,8 +49,17 @@ export const navigation = [
   },
   {
     text: 'Exploded View',
-    path: '/exploded',
-    icon: 'chart'
+    icon: 'chart',
+    items: [
+      {
+        text: 'Exploded View',
+        path: '/exploded'
+      },
+      {
+        text: 'Parts View',
+        path: '/'
+      }
+    ]
   },
   {
     text: 'Single Part Flow',

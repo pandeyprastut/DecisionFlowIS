@@ -1,6 +1,6 @@
 <dx-data-grid
     id="gridContainer"
-    [dataSource]="employees"
+    [dataSource]="materialDataSource"
     keyExpr="ID"
     [allowColumnReordering]="true"
     [allowColumnResizing]="true"
@@ -8,21 +8,46 @@
     [showBorders]="true">
     <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
     <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
-    <dxi-column
-        caption="Employee"
-        [width]="230"
-        [fixed]="true"
-        [calculateCellValue]="calculateCellValue"
-    ></dxi-column>
-    <dxi-column dataField="BirthDate" dataType="date"></dxi-column>
-    <dxi-column dataField="HireDate" dataType="date"></dxi-column>
-    <dxi-column dataField="Position" alignment="right"></dxi-column>
-    <dxi-column dataField="Address" [width]="230"></dxi-column>
-    <dxi-column dataField="City"></dxi-column>
-    <dxi-column dataField="State"></dxi-column>
-    <dxi-column dataField="Zipcode" [visible]="false"></dxi-column>
-    <dxi-column dataField="HomePhone"></dxi-column>
-    <dxi-column dataField="MobilePhone"></dxi-column>
-    <dxi-column dataField="Skype"></dxi-column>
-    <dxi-column dataField="Email"></dxi-column>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxi-column alignment="left" caption="Deliverable Part Number"dataField="deliverable"></dxi-column>
+    <dxi-column alignment="left" caption="Description"dataField="description"></dxi-column>
+    <dxi-column cellTemplate="flowBalance" alignment="right" caption="Flow Balance"dataField="flowBalance"></dxi-column>
+    <dxi-column cellTemplate="quality" alignment="right" caption="Quality"dataField="quality"></dxi-column>
+    <dxi-column cellTemplate="runTime" alignment="right" caption="Run Time % of Lead Time"dataField="runTimePercentageOfTotalLeadTime"></dxi-column>
+    <dxi-column cellTemplate="velocity" alignment="right" caption="Velocity"dataField="velocity"></dxi-column>
+    <dxi-column alignment="left" caption="Planner(s)"dataField="planner"></dxi-column>
+    <dxi-column alignment="right" caption="# of Make Components"dataField="makeComponentCount" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="# of BUY Parts Coming From Late Suppliers"dataField="buyComponentsFromLateSuppliers" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="# of Parts Going Through Constrained Resources"dataField="partsThroughConstraints" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="weeksSupply" alignment="right" caption="Weeks of Supply"dataField="weeksOfSupply" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="Entier Build Lead Time"dataField="entireBuildLeadTime" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="Lot Size"dataField="deliverableLotSize" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="lotDaily" alignment="right" caption="Lot Size vs Ave. Demand (Daily)"dataField="lotSizeVsDailyDemand" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="lotWeekly" alignment="right" caption="Lot Size vs Ave. Demand (Weekly)"dataField="lotSizeVsWeeklyDemand" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="deliverableDays" alignment="right" caption="Deliverable Lead Time (Days)"dataField="deliverableLeadTimeDays" [visible]="false"></dxi-column>
+
+    <div *dxTemplate="let data of 'flowBalance'">
+        <div *ngIf="data.data.flowBalance != null">{{math.ceil(data.data.flowBalance).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div *dxTemplate="let data of 'quality'">
+        <div *ngIf="data.data.quality != null">{{math.ceil(data.data.quality).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div *dxTemplate="let data of 'runTime'">
+        <div *ngIf="data.data.runTimePercentageOfTotalLeadTime != null">{{math.ceil(data.data.runTimePercentageOfTotalLeadTime).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div *dxTemplate="let data of 'velocity'">
+        <div *ngIf="data.data.velocity != null">{{math.ceil(data.data.velocity).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div *dxTemplate="let data of 'weeksSupply'">
+        <div *ngIf="data.data.weeksOfSupply != null">{{math.ceil(data.data.weeksOfSupply).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div *dxTemplate="let data of 'deliverableDays'">
+        <div *ngIf="data.data.deliverableLeadTimeDays != null">{{math.ceil(data.data.deliverableLeadTimeDays).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div *dxTemplate="let data of 'lotDaily'">
+        <div *ngIf="data.data.lotSizeVsDailyDemand != null">{{math.ceil(data.data.lotSizeVsDailyDemand).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div *dxTemplate="let data of 'lotWeekly'">
+        <div *ngIf="data.data.lotSizeVsWeeklyDemand != null">{{math.ceil(data.data.lotSizeVsWeeklyDemand).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
 </dx-data-grid>

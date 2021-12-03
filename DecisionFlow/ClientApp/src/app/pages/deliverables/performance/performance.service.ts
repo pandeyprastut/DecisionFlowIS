@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import CustomStore from 'devextreme/data/custom_store';
+import { HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 export class Employee {
     ID!: number;
@@ -110,7 +113,82 @@ let employees: Employee[] = [{
   providedIn: 'root'
 })
 export class PerformanceService {
+
+  private TopPanelValue = new BehaviorSubject<any>(
+    {
+      "flowBalanceGoodWeeksRollup": 0,
+      "flowBalanceTotalWeeksRollup": 0,
+      "totalPieceCountNCRRollup": 0,
+      "qualityRollup": 0,
+      "entireBuildRunTime": 0,
+      "entireBuildTotalTime": 0,
+      "velocityRollup": 0,
+      "length": 0
+    }
+  );
+
+  currentTopPanelValue = this.TopPanelValue.asObservable();
+
+  changeTopPanelValue(value: any){
+    this.TopPanelValue.next(value)
+}
+
   getEmployees(): Employee[] {
     return employees;
+  }
+
+  getGridData(http: any, url: any, body: any) {
+    let header = new HttpHeaders().set(
+      "x-api-key",
+      "mJwY9uinltILC9XIOpTo" 
+    );
+    console.log('performance grid function')
+
+
+    return new CustomStore({
+      loadMode: 'raw',
+      key: 'materialID',
+      load:() => {
+        return http.post(url, body, {headers:header})
+        .toPromise()
+        .then((res: any) => {
+                 
+          let pre = res.result;
+          let lineObj: any =   {
+            "flowBalanceGoodWeeksRollup": 0,
+            "flowBalanceTotalWeeksRollup": 0,
+            "totalPieceCountNCRRollup": 0,
+            "qualityRollup": 0,
+            "entireBuildRunTime": 0,
+            "entireBuildTotalTime": 0,
+            "velocityRollup": 0,
+            "length": 0
+          };
+       
+          pre.map((d: any) => {
+            lineObj.flowBalanceGoodWeeksRollup += d.flowBalanceGoodWeeksRollup;
+            lineObj.flowBalanceTotalWeeksRollup += d.flowBalanceTotalWeeksRollup;
+            lineObj.totalPieceCountNCRRollup += d.totalPieceCountNCRRollup;
+            lineObj.qualityRollup += d.qualityRollup;
+            lineObj.entireBuildRunTime += d.entireBuildRunTime;
+            lineObj.entireBuildTotalTime += d.entireBuildTotalTime;
+            lineObj.velocityRollup += d.velocityRollup;
+          })
+
+          lineObj.length = pre.length;
+
+          this.changeTopPanelValue(lineObj);
+
+
+          console.log(lineObj, 'line obj')
+          
+          console.log(pre, 'the results******')
+          return pre
+        })
+        .catch((error: any) => {
+            console.error(error, 'error');
+          });
+      },
+    });
   }
 }
