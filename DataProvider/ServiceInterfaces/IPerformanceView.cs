@@ -10,7 +10,7 @@ namespace DataProvider.ServiceInterfaces
 {
     public interface IPerformanceView
     {
-        Task<IEnumerable<PerformanceView>> GetDeliverablePerformanceData(DeliverableGridFilter filter);
+        Task<IEnumerable<PerformanceView>> GetDeliverablePerformanceData(CommonFilter filter);
         object GetGridData(IEnumerable<PerformanceView> allData);
         object GetHeaderData(IEnumerable<PerformanceView> allData);
     }

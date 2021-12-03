@@ -18,6 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IDeliverableView, DeliverableViewSource>();
             services.AddScoped<IInventoryView, InventoryViewSource>();
             services.AddScoped<IPerformanceView, PerformanceViewSource>();
+            services.AddScoped<IExplodedView, ExplodedViewSource>();
             return services;
 
         }

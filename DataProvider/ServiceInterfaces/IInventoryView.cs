@@ -10,7 +10,7 @@ namespace DataProvider.ServiceInterfaces
 {
     public interface IInventoryView
     {
-        Task<IEnumerable<InventoryView>> GetDeliverableInventoryData(DeliverableGridFilter deliverableGridFilter);
+        Task<IEnumerable<InventoryView>> GetDeliverableInventoryData(CommonFilter deliverableGridFilter);
         IEnumerable<InventoryView> GetGridData(IEnumerable<InventoryView> allData);
         InventoryViewSummary GetHeaderData(IEnumerable<InventoryView> allData);
     }

@@ -23,7 +23,7 @@ namespace DataProvider.Services
             //_mapper = mapper;
             _configuration = configutation;
         }
-        public async Task<IEnumerable<PerformanceView>> GetDeliverablePerformanceData(DeliverableGridFilter filter)
+        public async Task<IEnumerable<PerformanceView>> GetDeliverablePerformanceData(CommonFilter filter)
         {
             try
             {

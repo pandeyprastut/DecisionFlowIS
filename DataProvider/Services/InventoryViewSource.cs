@@ -23,7 +23,7 @@ namespace DataProvider.Services
             _configuration = configutation;
         }
 
-        public async Task<IEnumerable<InventoryView>> GetDeliverableInventoryData(DeliverableGridFilter deliverableGridFilter)
+        public async Task<IEnumerable<InventoryView>> GetDeliverableInventoryData(CommonFilter deliverableGridFilter)
         {
             try
             {

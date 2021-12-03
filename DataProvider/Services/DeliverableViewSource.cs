@@ -21,14 +21,14 @@ namespace DataProvider.Services
             _configuration = configutation;
         }
 
-        public async Task<IEnumerable<DeliverableView>> GetDeliverables(DeliverableGridFilter deliverableGridFilter)
+        public async Task<IEnumerable<DeliverableView>> GetDeliverables(CommonFilter deliverableGridFilter)
         {
             try
             {
                 List<DeliverableView> result;
                 deliverableGridFilter.ToJSON();
 
-                string connectionString = _configuration.GetSection("DFConnectionString").Value;
+                string connectionString = _configuration.GetConnectionString("DefaultConnection");
 
                 using (var conn = new SqlConnection(connectionString))
                 {

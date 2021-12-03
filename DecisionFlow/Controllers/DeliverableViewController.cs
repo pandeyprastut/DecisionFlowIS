@@ -57,7 +57,7 @@ namespace DecisionFlow.Controllers
         //}
 
         [HttpPost] 
-        public async Task<DeliverableViewResponse> GetAllGridDataByFilter(DeliverableGridFilter filter) //Delete this once ANDY switch
+        public async Task<DeliverableViewResponse> GetAllGridDataByFilter(CommonFilter filter) //Delete this once ANDY switch
         {
             try
             {
@@ -80,7 +80,7 @@ namespace DecisionFlow.Controllers
             }
         }
         [HttpPost]
-        public async Task<DeliverableViewResponse> GetDeliverableViewDataByFilter(DeliverableGridFilter filter)
+        public async Task<DeliverableViewResponse> GetDeliverableViewDataByFilter(CommonFilter filter)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace DecisionFlow.Controllers
         }
 
         [HttpPost]
-        public async Task<InventoryViewResponse> GetInventoryViewDataByFilter(DeliverableGridFilter filter)
+        public async Task<InventoryViewResponse> GetInventoryViewDataByFilter(CommonFilter filter)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace DecisionFlow.Controllers
             }
         }
         [HttpPost]
-        public async Task<PerformanceViewResponse> GetPerformanceViewDataByFilter(DeliverableGridFilter filter)
+        public async Task<PerformanceViewResponse> GetPerformanceViewDataByFilter(CommonFilter filter)
         {
             try
             {

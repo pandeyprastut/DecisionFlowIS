@@ -7,7 +7,7 @@ using DF.Contracts.Models;
 
 namespace DF.Contracts.Request
 {
-    public class DeliverableGridFilter
+    public class CommonFilter
     {
         public List<Customer> Customers { get; set; }
         public List <Program> Programs { get; set; }

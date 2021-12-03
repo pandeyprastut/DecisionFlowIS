@@ -10,6 +10,6 @@ namespace DataProvider.ServiceInterfaces
 {
     public interface IDeliverableView
     {
-        Task<IEnumerable<DeliverableView>> GetDeliverables(DeliverableGridFilter deliverableGridFilter);
+        Task<IEnumerable<DeliverableView>> GetDeliverables(CommonFilter deliverableGridFilter);
     }
 }
